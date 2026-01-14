@@ -18,7 +18,7 @@ export default function Home() {
           priority
         />
 
-        {/* LOGO EN EL CUADRO ROJO (ajusta el porcentaje si es necesario) */}
+
         <div className="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[95%]">
           <div className="relative w-[250px] h-[300px]">
             <Image

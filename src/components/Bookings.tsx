@@ -1,4 +1,3 @@
-// components/Bookings.tsx - CON FONDO PROFESIONAL
 import { BookingCard } from './BookingCard';
 
 const expeditions = [
