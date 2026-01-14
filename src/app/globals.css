@@ -1,28 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Stack+Sans+Headline:wght@200..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #99CC99;
-  --font-stack-sans: 'Stack Sans Headline', sans-serif;
-  --font-oswald: 'Oswald', sans-serif;
-  --font-work: 'Work Sans', sans-serif;
+/* Fuente KG Second Chances Solid local */
+@font-face {
+  font-family: 'KG Second Chances Solid';
+  src: url('/fonts/KGSecondChancesSolid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #99CC99;
-    --foreground: #ededed;
-  }
-}
-
+/* Solo el fondo verde general y la fuente global */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-stack-sans), sans-serif;
+  background: #99CC99;
+  font-family: 'KG Second Chances Solid', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
+
+/* No forzar el color blanco en todo el texto, eso lo maneja Tailwind */
+/* Tampoco forzar el fondo en main y section */

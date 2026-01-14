@@ -1,36 +1,43 @@
+"use client";
+
 import { Bookings } from "../components/Bookings";
 import { Footer } from "../components/Footer";
 import { Contact } from "../components/Contact";
 import Image from "next/image";
+import Test from "./test/page";
 
 export default function Home() {
   return (
     <>
-      <div className="relative w-full h-96 md:h-screen overflow-hidden">
+      <div className="relative w-full min-h-[110vh] overflow-hidden">
         <Image
           src="/hero.avif"
-          alt="Kayak en Lago Moquehue"
+          alt="Kayak en la Patagonia"
           fill
-          className="object-cover object-center"
+          className="object-cover"
           priority
-          placeholder="blur"
-          blurDataURL="/hero.avif"
         />
-        <div className="absolute inset-0 flex items-start justify-center pt-12 md:pt-20">
-          <Image
-            src="/logo.png"  // ← tu logo PNG en public/
-            alt="Logo Mawida"
-            width={320}      // tamaño mediano (ajustá si querés más chico/grande)
-            height={320}
-            className="drop-shadow-2xl"  // sombra para que resalte sobre la imagen
-            priority
-          />
+
+        {/* LOGO EN EL CUADRO ROJO (ajusta el porcentaje si es necesario) */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[95%]">
+          <div className="relative w-[250px] h-[300px]">
+            <Image
+              src="/logo.png"
+              alt="Logo Mawida"
+              fill
+              className="object-contain drop-shadow-2xl"
+              priority
+              sizes="300px"
+            />
+          </div>
         </div>
       </div>
-      <main className="bg-slate-50">
+
+      <main className="bg-[#99CC99] py-16 -mt-20">
         <Bookings />
         <Footer />
         <Contact />
+        <Test />
       </main>
     </>
   );
