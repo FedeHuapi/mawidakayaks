@@ -2,11 +2,11 @@
 
 import { Bookings } from "../components/Bookings";
 import { Footer } from "../components/Footer";
-import { Contact } from "../components/Contact";
 import Image from "next/image";
-import Test from "./test/page";
+// import Test from "./test/page";
 
 export default function Home() {
+
   return (
     <>
       <div className="relative w-full min-h-[110vh] overflow-hidden">
@@ -31,13 +31,30 @@ export default function Home() {
             />
           </div>
         </div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+          {/* <p className="text-white text-sm mb-2 animate-none">Descubrí nuestras aventuras</p> */}
+          <div className="animate-bounce">
+            <svg
+              className="w-8 h-8 text-white mx-auto"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <main className="bg-[#99CC99] py-16 -mt-20">
         <Bookings />
         <Footer />
-        <Contact />
-        <Test />
+        {/* <Test /> */}
       </main>
     </>
   );
