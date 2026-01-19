@@ -33,7 +33,7 @@ export function BookingCard({ exp }: BookingCardProps) {
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer p-6 w-full max-w-xs mx-auto border border-gray-300">
+        <div className="bg-white rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 p-6 w-full max-w-xs mx-auto border border-gray-300">
             {/* Icono */}
             <div className="text-5xl text-center mb-3">{exp.icon}</div>
 

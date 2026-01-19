@@ -9,14 +9,20 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative w-full min-h-[110vh] overflow-hidden">
+      <div className="relative w-full h-[100vh] min-h-[600px] md:h-screen overflow-hidden">
         <Image
           src="/hero.avif"
           alt="Kayak en la Patagonia"
           fill
-          className="object-cover"
+          className="object-cover object-center md:object-center"
           priority
+          sizes="100vw"
+          quality={75}
+          style={{
+            objectPosition: "center 30%",
+          }}
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/10 md:bg-none"></div>
 
 
         <div className="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[95%]">

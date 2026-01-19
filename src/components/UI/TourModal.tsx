@@ -42,6 +42,20 @@ export const TourModal: FC<TourModalProps> = ({
 
     if (!isOpen) return null;
 
+    const handleReserve = () => {
+        const phone = "5492993266379";
+        const message = `*¡Hola Mawida!*%0A%0AQuiero reservar:%0A%0A` +
+            `📌 *Expedición:* ${tour.name} (${tour.duration})%0A` +
+            `💰 *Precio:* ${tour.price}%0A%0A` +
+            `👥 Cantidad de personas: [COMPLETAR]%0A` +
+            `📅 Fecha deseada: [COMPLETAR]%0A` +
+            `👤 Nombre: [COMPLETAR]%0A%0A` +
+            `¡Gracias!`;
+
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+        window.open(whatsappURL, '_blank');
+    };
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
             {/* Overlay - click para cerrar */}
@@ -58,7 +72,7 @@ export const TourModal: FC<TourModalProps> = ({
                         <h2 className="text-3xl font-bold text-gray-900">{tour.name}</h2>
                         <button
                             onClick={onClose}
-                            className="text-gray-500 hover:text-gray-700 text-2xl"
+                            className="text-gray-500 hover:text-gray-700 text-2xl cursor-pointer"
                         >
                             ×
                         </button>
@@ -130,16 +144,13 @@ export const TourModal: FC<TourModalProps> = ({
                     <div className="flex flex-col sm:flex-row gap-4">
                         <button
                             onClick={onClose}
-                            className="flex-1 border-2 border-gray-300 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-50 transition"
+                            className="flex-1 border-2 border-gray-300 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-50 transition cursor-pointer"
                         >
                             Cerrar
                         </button>
                         <button
-                            onClick={() => {
-                                // Aquí irá la lógica de WhatsApp
-                                onClose();
-                            }}
-                            className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition"
+                            onClick={handleReserve}
+                            className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition cursor-pointer"
                         >
                             Reservar ahora
                         </button>

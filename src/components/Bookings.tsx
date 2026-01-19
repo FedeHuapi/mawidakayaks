@@ -1,5 +1,4 @@
-// components/Bookings.tsx
-"use client"; // Necesita ser Client Component
+"use client";
 import { useState } from "react";
 import { Card } from "./UI/Card";
 import { TourModal } from "./UI/TourModal";

@@ -24,7 +24,7 @@ export const Card: FC<CardProps> = ({
 }) => {
     const [imgError, setImgError] = useState(false);
     return (
-        <div className="bg-white rounded-2xl border-2 border-green-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer p-8 flex flex-col items-center justify-between min-h-[520px] w-full max-w-xs mx-auto">
+        <div className="bg-white rounded-2xl border-2 border-green-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 p-8 flex flex-col items-center justify-between min-h-[520px] w-full max-w-xs mx-auto">
             {/* Icono */}
             <div className="mb-4">
                 {!imgError && icon ? (
@@ -33,6 +33,7 @@ export const Card: FC<CardProps> = ({
                             src={icon.startsWith('/') ? icon : `/${icon}`}
                             alt={`Icono ${name}`}
                             fill
+                            sizes="200px"
                             className="object-contain"
                             onError={() => setImgError(true)}
                             priority={false}
@@ -70,14 +71,14 @@ export const Card: FC<CardProps> = ({
             <div className="w-full space-y-3">
                 <button
                     onClick={onView}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3.5 rounded-lg transition duration-200 shadow hover:shadow-md active:scale-95"
+                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3.5 rounded-lg transition duration-200 shadow hover:shadow-md active:scale-95 cursor-pointer"
                 >
                     Info del tour
                 </button>
 
                 <button
                     onClick={onReserve}
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-lg transition duration-200 shadow hover:shadow-md active:scale-95"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-lg transition duration-200 shadow hover:shadow-md active:scale-95 cursor-pointer"
                 >
                     Reservar por WhatsApp
                 </button>
