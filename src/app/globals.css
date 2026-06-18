@@ -9,9 +9,22 @@
 }
 
 body {
-  background: #99CC99;
-  font-family: 'KG Second Chances Solid', sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
+
+/* Hero load animations */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-animate {
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease forwards;
+}
+.hero-animate-1 { animation-delay: 0.1s; }
+.hero-animate-2 { animation-delay: 0.35s; }
+.hero-animate-3 { animation-delay: 0.55s; }
+.hero-animate-4 { animation-delay: 0.7s; }
