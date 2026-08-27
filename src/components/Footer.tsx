@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { handleAnchorClick } from "../lib/smoothScroll";
+
+const contactInfo = [
+    { icon: Phone, text: "+54 9 1234 5678" },
+    { icon: Mail, text: "info@mawida.com" },
+    { icon: MapPin, text: "Villa Pehuenia - Moquehue, Neuquén" },
+];
 
 const footerSections = [
     {
@@ -45,6 +53,7 @@ export function Footer() {
                                     <li key={label}>
                                         <a
                                             href={href}
+                                            onClick={handleAnchorClick}
                                             className="relative text-slate-400 hover:text-cyan-400 transition-colors duration-200 after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
                                         >
                                             {label}
@@ -56,10 +65,13 @@ export function Footer() {
                     ))}
                     <div>
                         <h3 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Contacto</h3>
-                        <ul className="space-y-2 text-sm text-slate-400">
-                            <li>+54 9 1234 5678</li>
-                            <li>info@mawida.com</li>
-                            <li>Villa Pehuenia - Moquehue, Neuquén</li>
+                        <ul className="space-y-2.5 text-sm text-slate-400">
+                            {contactInfo.map(({ icon: Icon, text }) => (
+                                <li key={text} className="flex items-center gap-2.5">
+                                    <Icon size={15} className="text-cyan-400 shrink-0" />
+                                    {text}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -90,7 +102,7 @@ export function Footer() {
                                     <ul className="space-y-2 text-sm">
                                         {links.map(({ label, href }) => (
                                             <li key={label}>
-                                                <a href={href} className="text-slate-400 hover:text-cyan-400 transition-colors duration-200">
+                                                <a href={href} onClick={handleAnchorClick} className="text-slate-400 hover:text-cyan-400 transition-colors duration-200">
                                                     {label}
                                                 </a>
                                             </li>
@@ -116,10 +128,13 @@ export function Footer() {
                         </button>
                         {openSection === "Contacto" && (
                             <div className="pb-3">
-                                <ul className="space-y-2 text-sm text-slate-400">
-                                    <li>+54 9 1234 5678</li>
-                                    <li>info@mawida.com</li>
-                                    <li>Villa Pehuenia - Moquehue, Neuquén</li>
+                                <ul className="space-y-2.5 text-sm text-slate-400">
+                                    {contactInfo.map(({ icon: Icon, text }) => (
+                                        <li key={text} className="flex items-center gap-2.5">
+                                            <Icon size={15} className="text-cyan-400 shrink-0" />
+                                            {text}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         )}

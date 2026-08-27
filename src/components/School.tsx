@@ -22,7 +22,7 @@ export function School() {
                     <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-md border border-slate-100">
                         <div className="relative h-72 md:h-auto min-h-[480px]">
                             <Image
-                                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=85"
+                                src="/gallery/kayak-pov.jpg"
                                 alt="Escuela de kayak Mawida"
                                 fill
                                 className="object-cover"

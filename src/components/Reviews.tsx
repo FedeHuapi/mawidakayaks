@@ -57,8 +57,12 @@ export function Reviews() {
     }, [paused, next]);
 
     return (
-        <section className="py-24 bg-slate-50">
-            <div className="max-w-3xl mx-auto px-4">
+        <section className="relative py-24 bg-slate-50 overflow-hidden">
+            <div
+                className="absolute inset-x-0 bottom-0 h-6 pointer-events-none"
+                style={{ background: "linear-gradient(to bottom, transparent 0%, #0f172a 100%)" }}
+            />
+            <div className="relative z-10 max-w-3xl mx-auto px-4">
                 <AnimateIn className="text-center mb-16">
                     <span className="text-cyan-600 text-xs font-semibold tracking-[0.2em] uppercase">Lo que dicen nuestros clientes</span>
                     <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mt-3 mb-4">Reseñas</h2>

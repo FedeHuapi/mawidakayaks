@@ -1,5 +1,6 @@
 import { BookingCard } from './BookingCard';
 import { AnimateIn } from './AnimateIn';
+import { ResponsiveVideoBg } from './ResponsiveVideoBg';
 
 const expeditions = [
     {
@@ -10,7 +11,7 @@ const expeditions = [
         description: "Remada tranquila por el lago, ideal para principiantes",
         price: "$45.000",
         badge: "Principiantes",
-        photo: "https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=800&q=80",
+        photo: "/gallery/kayak-duo-reflejo.jpg",
     },
     {
         id: 2,
@@ -20,7 +21,7 @@ const expeditions = [
         description: "Recorrido completo con parada en isla secreta",
         price: "$70.000",
         badge: "Más popular",
-        photo: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+        photo: "/gallery/kayak-aerea.jpg",
     },
     {
         id: 3,
@@ -30,26 +31,35 @@ const expeditions = [
         description: "Aventura completa + almuerzo en la costa",
         price: "$120.000",
         badge: "Experiencia completa",
-        photo: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+        photo: "/gallery/kayak-pov-remo.jpg",
     },
 ];
 
 export function Bookings() {
     return (
-        <div
-            id="expediciones"
-            className="relative py-28"
-            style={{
-                backgroundImage: 'url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=85")',
-                backgroundAttachment: 'fixed',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
-        >
-            <div className="absolute inset-0 bg-slate-900/55" />
+        <div id="expediciones" className="relative pt-14 pb-28 md:py-28 overflow-hidden" style={{ backgroundColor: "#5D776B" }}>
+            {/* En mobile el video se limita a una franja tipo banner (más alta, con fundido corto)
+                para que se vea bien antes de pasar a las tarjetas; en desktop cubre toda la sección */}
+            <div className="absolute inset-x-0 top-0 h-[210vh] md:bottom-0 md:h-auto">
+                <ResponsiveVideoBg
+                    desktopSrc="/gallery/bookings-bg.mp4"
+                    mobileSrc="/gallery/bookings-bg-mobile.mp4"
+                    desktopPoster="/gallery/bookings-bg-poster.jpg"
+                    mobilePoster="/gallery/bookings-bg-mobile-poster.jpg"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-slate-900/40" />
+                {/* El video se disuelve hacia su propio color de agua (#5D776B), que sigue siendo el fondo de FAQ */}
+                <div
+                    className="absolute inset-x-0 bottom-0 h-16 md:h-56"
+                    style={{
+                        background: "linear-gradient(to bottom, transparent 0%, #5D776B 100%)",
+                    }}
+                />
+            </div>
 
             <div className="relative z-10 max-w-6xl mx-auto px-4">
-                <AnimateIn className="text-center mb-14">
+                <AnimateIn className="text-center mb-8 md:mb-14">
                     <span className="text-cyan-300 text-xs font-semibold tracking-[0.2em] uppercase">Para los más aventureros</span>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">Elegí tu aventura</h2>
                     <div className="flex items-center justify-center gap-3 mb-4">

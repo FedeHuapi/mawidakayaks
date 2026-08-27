@@ -7,18 +7,20 @@ import { FAQ } from "../components/FAQ";
 import { Weather } from "../components/Weather";
 import { Footer } from "../components/Footer";
 import Image from "next/image";
+import { handleAnchorClick } from "../lib/smoothScroll";
+import { ResponsiveVideoBg } from "../components/ResponsiveVideoBg";
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <div className="relative w-full min-h-[90vh] overflow-hidden">
-        <Image
-          src="/hero.avif"
-          alt="Kayak en la Patagonia"
-          fill
-          className="object-cover"
-          priority
+      <div className="relative w-full min-h-screen overflow-hidden">
+        <ResponsiveVideoBg
+          desktopSrc="/gallery/hero-bg.mp4"
+          mobileSrc="/gallery/hero-bg-mobile.mp4"
+          desktopPoster="/gallery/hero-bg-poster.jpg"
+          mobilePoster="/gallery/hero-bg-mobile-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/50 via-slate-900/20 to-slate-900/75" />
 
@@ -35,12 +37,20 @@ export default function Home() {
           </div>
           <a
             href="#expediciones"
+            onClick={handleAnchorClick}
             className="hero-animate hero-animate-2 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:gap-3 tracking-wide text-sm"
           >
             Ver expediciones
             <span>→</span>
           </a>
         </div>
+
+        <div
+          className="absolute bottom-0 left-0 w-full h-[2px] z-10"
+          style={{
+            background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)",
+          }}
+        />
       </div>
 
       <main className="bg-white">

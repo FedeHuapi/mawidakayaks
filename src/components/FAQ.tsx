@@ -35,34 +35,47 @@ export function FAQ() {
     const [open, setOpen] = useState<number | null>(null);
 
     return (
-        <section className="py-24 bg-white">
-            <div className="max-w-3xl mx-auto px-4">
+        <section
+            className="relative py-24 overflow-hidden"
+            style={{ background: "linear-gradient(to bottom, #5D776B 0%, #4F6E5C 30%, #6B8F6A 60%, #3F5A4A 100%)" }}
+        >
+            <div
+                className="absolute bottom-0 left-0 w-full h-[2px] z-10"
+                style={{ background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)" }}
+            />
+            <div className="relative z-10 max-w-3xl mx-auto px-4">
                 <AnimateIn className="text-center mb-14">
-                    <span className="text-cyan-600 text-xs font-semibold tracking-[0.2em] uppercase">Todo lo que necesitás saber</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mt-3 mb-4">Preguntas frecuentes</h2>
+                    <span className="text-cyan-300 text-xs font-semibold tracking-[0.2em] uppercase">Todo lo que necesitás saber</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">Preguntas frecuentes</h2>
                     <div className="flex items-center justify-center gap-3">
-                        <div className="h-px w-12 bg-slate-200" />
-                        <div className="h-1 w-8 bg-cyan-500 rounded-full" />
-                        <div className="h-px w-12 bg-slate-200" />
+                        <div className="h-px w-12 bg-white/20" />
+                        <div className="h-1 w-8 bg-cyan-400 rounded-full" />
+                        <div className="h-px w-12 bg-white/20" />
                     </div>
                 </AnimateIn>
 
                 <div className="space-y-3">
                     {faqs.map((faq, i) => (
                         <AnimateIn key={i} delay={i * 60}>
-                            <div className={`border rounded-2xl overflow-hidden transition-colors duration-200 ${open === i ? "border-cyan-200 bg-cyan-50/30" : "border-slate-100 bg-white"}`}>
+                            <div
+                                className="border rounded-2xl overflow-hidden transition-colors duration-200"
+                                style={{
+                                    backgroundColor: open === i ? "rgba(255,255,255,0.22)" : "#7B958A",
+                                    borderColor: open === i ? "rgba(103,232,249,0.55)" : "rgba(255,255,255,0.25)",
+                                }}
+                            >
                                 <button
                                     onClick={() => setOpen(open === i ? null : i)}
                                     className="w-full flex items-center justify-between px-6 py-5 text-left"
                                 >
-                                    <span className="font-semibold text-slate-800 pr-4 leading-snug">{faq.q}</span>
+                                    <span className="font-semibold text-white pr-4 leading-snug">{faq.q}</span>
                                     {open === i
-                                        ? <Minus size={18} className="text-cyan-500 shrink-0" />
-                                        : <Plus size={18} className="text-slate-400 shrink-0" />
+                                        ? <Minus size={18} className="text-cyan-300 shrink-0" />
+                                        : <Plus size={18} className="text-white/50 shrink-0" />
                                     }
                                 </button>
                                 <div className={`overflow-hidden transition-all duration-300 ${open === i ? "max-h-48" : "max-h-0"}`}>
-                                    <p className="px-6 pb-6 text-slate-500 leading-relaxed text-sm">{faq.a}</p>
+                                    <p className="px-6 pb-6 text-white/70 leading-relaxed text-sm">{faq.a}</p>
                                 </div>
                             </div>
                         </AnimateIn>

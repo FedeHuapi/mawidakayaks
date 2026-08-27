@@ -47,8 +47,12 @@ export function Weather() {
     const condition = weather ? getCondition(weather.weathercode, weather.windspeed) : null;
 
     return (
-        <section className="py-16 bg-slate-900">
-            <div className="max-w-5xl mx-auto px-4">
+        <section className="relative py-16 bg-slate-900 overflow-hidden">
+            <div
+                className="absolute bottom-0 left-0 w-full h-[2px] z-10"
+                style={{ background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)" }}
+            />
+            <div className="relative z-10 max-w-5xl mx-auto px-4">
                 <AnimateIn variant="fade">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                         {/* Label */}
