@@ -35,7 +35,7 @@ export function School() {
                                 Escuelita de kayak
                             </h3>
                             <p className="text-slate-500 leading-relaxed mb-8">
-                                Clases teóricas y prácticas en el lago Moquehue. Aprendé técnicas de remo, seguridad en agua y navegación en un ambiente natural único de la Patagonia argentina.
+                                Clases teóricas y prácticas en el lago Moquehue. Aprendé técnicas de palada, seguridad en agua y navegación en un ambiente natural único de la Patagonia argentina.
                             </p>
                             <div className="flex flex-wrap gap-3 mb-8">
                                 <div className="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-4 py-2.5">

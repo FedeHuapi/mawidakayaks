@@ -98,7 +98,7 @@ export function BookingCard({ exp }: BookingCardProps) {
                     </div>
                     <button
                         onClick={handleReserve}
-                        className="bg-cyan-50 hover:bg-cyan-600 text-cyan-600 hover:text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-cyan-600/25 border border-cyan-200 hover:border-cyan-600 flex items-center gap-1.5"
+                        className="bg-cyan-50 hover:bg-cyan-600 text-cyan-600 hover:text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-cyan-600/25 border border-cyan-200 hover:border-cyan-600 flex items-center gap-1.5 cursor-pointer"
                     >
                         Reservar →
                     </button>

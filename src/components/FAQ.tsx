@@ -23,7 +23,7 @@ const faqs = [
     },
     {
         q: "¿Cómo confirmo y pago mi reserva?",
-        a: "Hacé click en 'Reservar' en la expedición que te interese. Te contactamos por WhatsApp en menos de 24 horas para confirmar fecha, horario y método de pago. Aceptamos transferencia, efectivo y tarjeta.",
+        a: "Hacé click en 'Reservar' en la expedición que te interese. Te contactamos por WhatsApp en menos de 24 horas para confirmar fecha, horario y método de pago. Aceptamos transferencia y efectivo.",
     },
     {
         q: "¿Cuántas personas van por salida?",

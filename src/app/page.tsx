@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer";
 import Image from "next/image";
 import { handleAnchorClick } from "../lib/smoothScroll";
 import { ResponsiveVideoBg } from "../components/ResponsiveVideoBg";
+import { WhatsAppButton } from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -61,6 +62,8 @@ export default function Home() {
         <School />
         <Footer />
       </main>
+
+      <WhatsAppButton />
     </>
   );
 }

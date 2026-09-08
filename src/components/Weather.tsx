@@ -25,9 +25,24 @@ function WeatherIcon({ code }: { code: number }) {
     return <Cloud size={44} className="text-slate-400" />;
 }
 
+function formatToday() {
+    const today = new Date().toLocaleDateString("es-AR", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        timeZone: "America/Argentina/Buenos_Aires",
+    });
+    return today.charAt(0).toUpperCase() + today.slice(1);
+}
+
 export function Weather() {
     const [weather, setWeather] = useState<WeatherData | null>(null);
     const [error, setError] = useState(false);
+    const [today, setToday] = useState<string | null>(null);
+
+    useEffect(() => {
+        setToday(formatToday());
+    }, []);
 
     useEffect(() => {
         fetch(
@@ -57,7 +72,10 @@ export function Weather() {
                     <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                         {/* Label */}
                         <div className="text-center md:text-left">
-                            <p className="text-slate-500 text-xs uppercase tracking-widest mb-1">Estado actual del lago</p>
+                            <p className="text-slate-500 text-xs uppercase tracking-widest mb-1">
+                                Estado actual del lago
+                                {today && <span className="text-slate-600 normal-case tracking-normal"> · {today}</span>}
+                            </p>
                             <h3 className="text-2xl font-bold text-white">Lago Moquehue</h3>
                             <p className="text-slate-400 text-sm">Villa Pehuenia, Neuquén</p>
                         </div>
@@ -100,6 +118,9 @@ export function Weather() {
                             </div>
                         )}
                     </div>
+                    <p className="text-slate-500 text-xs text-center md:text-left mt-8">
+                        Referencia rápida en vivo (Open-Meteo). Antes de cada salida, nuestro equipo confirma las condiciones cruzando Windguru, Windy y el Servicio Meteorológico Nacional.
+                    </p>
                 </AnimateIn>
             </div>
         </section>
