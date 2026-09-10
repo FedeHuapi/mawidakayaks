@@ -33,6 +33,16 @@ const expeditions = [
         badge: "Experiencia completa",
         photo: "/gallery/kayak-pov-remo.jpg",
     },
+    {
+        id: 4,
+        slug: "expedicion-nueva",
+        name: "Nueva expedición (nombre a definir)",
+        duration: "3 horas",
+        description: "Próximamente más detalles de esta nueva salida",
+        price: "",
+        badge: "Nueva",
+        photo: "/gallery/kayak-solo-volcan.jpg",
+    },
 ];
 
 export function Bookings() {
@@ -51,9 +61,9 @@ export function Bookings() {
                 <div className="absolute inset-0 bg-slate-900/40" />
                 {/* El video se disuelve hacia su propio color de agua (#5D776B), que sigue siendo el fondo de FAQ */}
                 <div
-                    className="absolute inset-x-0 bottom-0 h-16 md:h-56"
+                    className="absolute inset-x-0 bottom-0 h-40 md:h-48"
                     style={{
-                        background: "linear-gradient(to bottom, transparent 0%, #5D776B 100%)",
+                        background: "linear-gradient(to bottom, transparent 0%, #2F6B72 45%, #5D776B 100%)",
                     }}
                 />
             </div>
@@ -72,7 +82,7 @@ export function Bookings() {
                     </p>
                 </AnimateIn>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {expeditions.map((exp, i) => (
                         <AnimateIn key={exp.id} delay={i * 120}>
                             <BookingCard exp={exp} />

@@ -37,7 +37,7 @@ export function FAQ() {
     return (
         <section
             className="relative py-24 overflow-hidden"
-            style={{ background: "linear-gradient(to bottom, #5D776B 0%, #4F6E5C 30%, #6B8F6A 60%, #3F5A4A 100%)" }}
+            style={{ backgroundColor: "#5D776B" }}
         >
             <div
                 className="absolute bottom-0 left-0 w-full h-[2px] z-10"

@@ -1,45 +1,46 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { AnimateIn } from "./AnimateIn";
+import { GoogleLogo } from "./GoogleLogo";
 
 const reviews = [
     {
-        name: "Martina G.",
+        name: "Ryu",
         stars: 5,
-        date: "Enero 2026",
-        text: "Una experiencia increíble. Los guías son muy profesionales y el paisaje del lago Moquehue es impresionante. 100% recomendable para toda la familia.",
+        date: "Hace 8 meses",
+        text: "La excursión nos encantó. Diego, guía, instructor y anfitrión, excelente. Muy didáctico para enseñarnos. Fuimos en familia, el trato de primera. Sabe mucho y lo sabe transmitir. Comimos en la isla, él preparó todo con dedicación, inclusive panqueques hechos por él. Un lujo. Muchas gracias por una aventura inolvidable.",
     },
     {
-        name: "Carlos R.",
+        name: "Ari",
         stars: 5,
-        date: "Diciembre 2025",
-        text: "Fuimos en familia con nuestros hijos de 11 y 14 años. Se divirtieron muchísimo y los instructores fueron muy atentos. La organización fue perfecta.",
+        date: "Hace 6 meses",
+        text: "¡Increíble kayak en Moquehue con Mawida! 🛶 Diego deslumbra con datos geológicos de la isla y el lago. Aguas calmas y transparentes, acceso a playas vírgenes y un brunch gourmet exquisito para cerrar. ¡Aventura y sabor en un entorno único! ✨🏔️",
     },
     {
-        name: "Sofía M.",
+        name: "Ruben D.",
         stars: 5,
-        date: "Febrero 2026",
-        text: "La expedición a Isla Lepen fue lo mejor de nuestro viaje a Villa Pehuenia. El snack a bordo fue un detalle genial y el guía nos contó muchísimo sobre el lugar.",
+        date: "Hace 8 meses",
+        text: "Excelente travesía de 4 hs super entretenidas. Diego durante la salida va dando muchos datos del entorno. Además hay una parada en la isla para descansar e incluye una super picada. Los kayaks están muy buenos. Sin duda volvería a hacer otra travesía con Diego.",
     },
     {
-        name: "Diego P.",
+        name: "Victoria A.",
         stars: 5,
-        date: "Enero 2026",
-        text: "Llegamos sin experiencia previa y en media hora ya estábamos remando solos. Muy buena atención, equipo en perfecto estado y un entorno natural que quita el aliento.",
+        date: "Hace 9 meses",
+        text: "Excelente experiencia! Diego es muy amable y responsable para la actividad. Además del paseo y las vistas hermosas, nos compartió un montón de conocimiento sobre la zona, su flora y fauna. Promueven un turismo responsable con el medio ambiente. Súper recomendable! ☺️",
     },
     {
-        name: "Laura B.",
+        name: "Cecilia A.",
         stars: 5,
-        date: "Diciembre 2025",
-        text: "El lago es hermoso y la expedición de 6 horas con almuerzo en la costa fue épica. Ya reservamos para el próximo verano. Difícil superar esta experiencia.",
+        date: "Hace 5 meses",
+        text: "Fuimos 3 personas, a la travesía de 4 hs, una experiencia increíble, donde pudimos recorrer el lago Moquehue observando sus montañas y sus aguas transparentes. Tanto Diego como Fede, unos genios!!. Al llegar a la isla, tomamos un descanso donde disfrutamos de un brunch con todo: desde dulce a salado (una preparación de lujo). El lago estaba tan espectacular que pudimos disfrutar del agua. 100% recomendable!",
     },
     {
-        name: "Tomás A.",
+        name: "Tomás G",
         stars: 5,
-        date: "Febrero 2026",
-        text: "Mawida tiene todo: equipo impecable, guías con mucho conocimiento del lugar y precios muy razonables para la calidad que ofrecen. Una joya de la Patagonia.",
+        date: "Hace 6 meses",
+        text: "Excelente!!! Hicimos la navegación de 4hs a isla Lepen. No solo es una remada ya que Diego, el guía, nos explicó muchas cosas en relación a la biodiversidad y a la historia del lugar. En la isla pudimos bajar, disfrutar de un desayuno espectacular y nadar un rato. No tenemos experiencia en remar pero te explican y te ayudan en todo momento así que pudimos disfrutarlo al 100%. Vale la pena!!",
     },
 ];
 
@@ -55,6 +56,31 @@ export function Reviews() {
         const t = setInterval(next, 5000);
         return () => clearInterval(t);
     }, [paused, next]);
+
+    const dragStartX = useRef<number | null>(null);
+    const dragDeltaX = useRef(0);
+
+    const handlePointerDown = (e: React.PointerEvent) => {
+        dragStartX.current = e.clientX;
+        dragDeltaX.current = 0;
+        setPaused(true);
+        e.currentTarget.setPointerCapture(e.pointerId);
+    };
+
+    const handlePointerMove = (e: React.PointerEvent) => {
+        if (dragStartX.current === null) return;
+        dragDeltaX.current = e.clientX - dragStartX.current;
+    };
+
+    const handlePointerUp = () => {
+        if (dragStartX.current === null) return;
+        const threshold = 50;
+        if (dragDeltaX.current > threshold) prev();
+        else if (dragDeltaX.current < -threshold) next();
+        dragStartX.current = null;
+        dragDeltaX.current = 0;
+        setPaused(false);
+    };
 
     return (
         <section className="relative py-24 bg-slate-50 overflow-hidden">
@@ -78,9 +104,14 @@ export function Reviews() {
                         className="relative"
                         onMouseEnter={() => setPaused(true)}
                         onMouseLeave={() => setPaused(false)}
+                        onPointerDown={handlePointerDown}
+                        onPointerMove={handlePointerMove}
+                        onPointerUp={handlePointerUp}
+                        onPointerCancel={handlePointerUp}
+                        style={{ touchAction: "pan-y" }}
                     >
                         {/* Card */}
-                        <div key={current} className="review-fade bg-white rounded-3xl shadow-sm border border-slate-100 px-10 py-12 md:px-16 md:py-14 text-center">
+                        <div key={current} className="review-fade bg-white rounded-3xl shadow-sm border border-slate-100 px-10 py-12 md:px-16 md:py-14 text-center select-none cursor-grab active:cursor-grabbing">
                             <Quote size={36} className="text-cyan-100 mx-auto mb-6" />
                             <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-8 italic">
                                 &ldquo;{reviews[current].text}&rdquo;
@@ -91,7 +122,12 @@ export function Reviews() {
                                 ))}
                             </div>
                             <p className="font-bold text-slate-800">{reviews[current].name}</p>
-                            <p className="text-slate-400 text-sm mt-1">{reviews[current].date} · Google</p>
+                            <p className="text-slate-400 text-sm mt-1 flex items-center justify-center gap-1.5">
+                                {reviews[current].date}
+                                <span className="flex items-center gap-1">
+                                    · <GoogleLogo size={14} /> Google
+                                </span>
+                            </p>
                         </div>
 
                         {/* Flechas */}

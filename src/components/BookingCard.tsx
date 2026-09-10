@@ -23,12 +23,14 @@ const badgeStyles: Record<string, string> = {
     "Más popular": "bg-cyan-500 text-white",
     "Principiantes": "bg-emerald-100 text-emerald-700",
     "Experiencia completa": "bg-amber-100 text-amber-700",
+    "Nueva": "bg-violet-100 text-violet-700",
 };
 
 const extraDetails: Record<number, string[]> = {
     1: ["Equipo incluido (kayak + remo + chaleco)", "Guía bilingüe", "Apto para mayores de 10 años"],
     2: ["Snack a bordo incluido", "Parada en Isla Lepen", "Fotografías del recorrido"],
     3: ["Almuerzo en la costa incluido", "Recorrido completo por el lago", "Apto para todos los niveles"],
+    4: ["Detalles disponibles próximamente"],
 };
 
 export function BookingCard({ exp }: BookingCardProps) {
@@ -37,13 +39,16 @@ export function BookingCard({ exp }: BookingCardProps) {
 
     const handleReserve = (e: React.MouseEvent) => {
         e.stopPropagation();
-        alert(`¡Reserva recibida para ${exp.name}!\nPrecio: ${exp.price} por persona.\n\nEn breve nos comunicamos por WhatsApp para confirmar tu lugar.`);
+        const phone = "5492993266379";
+        const message = `¡Hola Mawida! Quiero reservar la ${exp.name} (${exp.duration}). ¿Me pasan info de fechas y disponibilidad?`;
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, "_blank");
     };
 
     return (
         <div
             id={exp.slug}
-            className="group relative bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+            className="group relative bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full flex flex-col"
             onClick={() => setShowDetails((prev) => !prev)}
         >
             {/* Foto */}
@@ -70,7 +75,7 @@ export function BookingCard({ exp }: BookingCardProps) {
                 </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-slate-800 leading-tight mb-2">{exp.name}</h3>
                 <p className="text-slate-500 text-sm mb-4 leading-relaxed">{exp.description}</p>
 
@@ -91,16 +96,12 @@ export function BookingCard({ exp }: BookingCardProps) {
                     {showDetails ? "Menos detalles" : "Ver qué incluye"}
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <div>
-                        <p className="text-xs text-slate-400 mb-0.5">Precio por persona</p>
-                        <span className="text-2xl font-extrabold text-cyan-600 tracking-tight">{exp.price}</span>
-                    </div>
+                <div className="pt-4 border-t border-slate-100 mt-auto">
                     <button
                         onClick={handleReserve}
-                        className="bg-cyan-50 hover:bg-cyan-600 text-cyan-600 hover:text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-cyan-600/25 border border-cyan-200 hover:border-cyan-600 flex items-center gap-1.5 cursor-pointer"
+                        className="w-full bg-cyan-50 hover:bg-cyan-600 text-cyan-600 hover:text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-cyan-600/25 border border-cyan-200 hover:border-cyan-600 flex items-center justify-center gap-1.5 cursor-pointer"
                     >
-                        Reservar →
+                        Consultar por WhatsApp →
                     </button>
                 </div>
             </div>
