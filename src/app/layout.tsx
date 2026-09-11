@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     icon: "/favicon-v2.ico",
     apple: "/apple-touch-icon.png",
   },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+    date: false,
+  },
 };
 
 export default function RootLayout({

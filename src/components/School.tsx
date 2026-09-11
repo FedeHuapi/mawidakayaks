@@ -1,19 +1,35 @@
-import Image from "next/image";
 import { AnimateIn } from "./AnimateIn";
+import { PhotoCarouselBg } from "./PhotoCarouselBg";
 import { Clock, Users, Package } from "lucide-react";
+
+const cardPhotos = [
+    "/gallery/kayak-pov.jpg",
+    "/gallery/kayak-pov-remo.jpg",
+    "/gallery/kayak-grupo.jpg",
+    "/gallery/picada-costa.jpg",
+];
 
 export function School() {
     return (
-        <section id="escuela" className="py-24 bg-white">
-            <div className="max-w-6xl mx-auto px-4">
+        <section id="escuela" className="relative py-24 bg-cyan-100 overflow-hidden">
+            <div
+                className="absolute inset-0"
+                style={{
+                    backgroundImage: "url(/gallery/logo-stickers-bg.png)",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            />
+            <div className="relative z-10 max-w-6xl mx-auto px-4">
                 <AnimateIn className="text-center mb-14">
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Escuela de Kayak</h2>
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                        <div className="h-px w-12 bg-slate-200" />
-                        <div className="h-1 w-8 bg-cyan-500 rounded-full" />
-                        <div className="h-px w-12 bg-slate-200" />
-                    </div>
-                    <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
+                    <h2 className="inline-block text-3xl md:text-5xl font-bold text-slate-800 bg-amber-400 px-6 py-3 md:px-10 md:py-4 shadow-lg -rotate-2 mb-6">
+                        Escuela de Kayak
+                    </h2>
+                    <p
+                        className="text-white text-lg max-w-2xl mx-auto leading-relaxed font-medium"
+                        style={{ textShadow: "0 2px 0 rgba(0,0,0,0.9), 0 4px 12px rgba(0,0,0,0.7)" }}
+                    >
                         Temporada de verano 2026 · Clases para todos los niveles
                     </p>
                 </AnimateIn>
@@ -21,13 +37,7 @@ export function School() {
                 <AnimateIn variant="fade">
                     <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-md border border-slate-100">
                         <div className="relative h-72 md:h-auto min-h-[480px]">
-                            <Image
-                                src="/gallery/kayak-pov.jpg"
-                                alt="Escuela de kayak Mawida"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
+                            <PhotoCarouselBg photos={cardPhotos} className="absolute inset-0" />
                         </div>
                         <div className="bg-white px-8 py-12 md:px-12 md:py-14 flex flex-col justify-center">
                             <span className="text-cyan-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Aprendé con nosotros</span>

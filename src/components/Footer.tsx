@@ -5,9 +5,9 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { handleAnchorClick } from "../lib/smoothScroll";
 
 const contactInfo = [
-    { icon: Phone, text: "+54 9 1234 5678" },
-    { icon: Mail, text: "info@mawida.com" },
-    { icon: MapPin, text: "Villa Pehuenia - Moquehue, Neuquén" },
+    { icon: Phone, text: "+54 9 1234 5678", href: "tel:+5491234567" },
+    { icon: Mail, text: "info@mawida.com", href: "mailto:info@mawida.com" },
+    { icon: MapPin, text: "Villa Pehuenia - Moquehue, Neuquén", href: undefined },
 ];
 
 const footerSections = [
@@ -66,10 +66,10 @@ export function Footer() {
                     <div>
                         <h3 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Contacto</h3>
                         <ul className="space-y-2.5 text-sm text-slate-400">
-                            {contactInfo.map(({ icon: Icon, text }) => (
+                            {contactInfo.map(({ icon: Icon, text, href }) => (
                                 <li key={text} className="flex items-center gap-2.5">
                                     <Icon size={15} className="text-cyan-400 shrink-0" />
-                                    {text}
+                                    {href ? <a href={href} className="hover:text-cyan-400 transition-colors duration-200">{text}</a> : text}
                                 </li>
                             ))}
                         </ul>
