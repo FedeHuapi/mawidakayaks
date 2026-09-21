@@ -23,10 +23,10 @@ export default function Home() {
           mobilePoster="/gallery/hero-bg-mobile-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/50 via-slate-900/20 to-slate-900/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-lago-profundo/50 via-lago-noche/20 to-lago-noche/75" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 -mt-12">
-          <div className="relative w-[150px] h-[180px] md:w-[190px] md:h-[228px] mb-10 drop-shadow-2xl hero-animate hero-animate-1">
+          <div className="relative w-[150px] h-[180px] md:w-[190px] md:h-[228px] mb-8 drop-shadow-2xl hero-animate hero-animate-1">
             <Image
               src="/logo.png"
               alt="Logo Mawida"
@@ -36,22 +36,22 @@ export default function Home() {
               sizes="220px"
             />
           </div>
+          <h1 className="hero-animate hero-animate-2 font-kg text-white text-4xl md:text-6xl text-center leading-tight [text-shadow:0_2px_18px_rgba(2,20,30,0.55)]">
+            Remá el lago Moquehue
+          </h1>
+          <p className="hero-animate hero-animate-3 mt-4 mb-9 max-w-md text-center text-white/90 text-base md:text-lg leading-relaxed [text-shadow:0_1px_12px_rgba(2,20,30,0.6)]">
+            Salidas guiadas de 2 a 6 horas en Villa Pehuenia, con todo el equipo incluido
+          </p>
           <a
             href="#expediciones"
             onClick={handleAnchorClick}
-            className="hero-animate hero-animate-2 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:gap-3 tracking-wide text-sm"
+            className="hero-animate hero-animate-4 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:gap-3 tracking-wide text-sm"
           >
             Ver expediciones
             <span>→</span>
           </a>
         </div>
 
-        <div
-          className="absolute bottom-0 left-0 w-full h-[2px] z-10"
-          style={{
-            background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)",
-          }}
-        />
       </div>
 
       <main className="bg-white">

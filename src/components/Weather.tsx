@@ -62,19 +62,15 @@ export function Weather() {
     const condition = weather ? getCondition(weather.weathercode, weather.windspeed) : null;
 
     return (
-        <section className="relative py-16 bg-slate-900 overflow-hidden">
-            <div
-                className="absolute bottom-0 left-0 w-full h-[2px] z-10"
-                style={{ background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)" }}
-            />
+        <section className="relative py-16 bg-lago-noche overflow-hidden">
             <div className="relative z-10 max-w-5xl mx-auto px-4">
                 <AnimateIn variant="fade">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                         {/* Label */}
                         <div className="text-center md:text-left">
-                            <p className="text-slate-500 text-xs uppercase tracking-widest mb-1">
+                            <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">
                                 Estado actual del lago
-                                {today && <span className="text-slate-600 normal-case tracking-normal"> · {today}</span>}
+                                {today && <span className="text-slate-400 normal-case tracking-normal"> · {today}</span>}
                             </p>
                             <h3 className="text-2xl font-bold text-white">Lago Moquehue</h3>
                             <p className="text-slate-400 text-sm">Villa Pehuenia, Neuquén</p>
@@ -112,13 +108,13 @@ export function Weather() {
                             </div>
                         ) : (
                             <div className="flex gap-6 animate-pulse">
-                                <div className="h-12 w-28 bg-slate-700 rounded-xl" />
-                                <div className="h-12 w-28 bg-slate-700 rounded-xl" />
-                                <div className="h-12 w-40 bg-slate-700 rounded-xl" />
+                                <div className="h-12 w-28 bg-white/10 rounded-xl" />
+                                <div className="h-12 w-28 bg-white/10 rounded-xl" />
+                                <div className="h-12 w-40 bg-white/10 rounded-xl" />
                             </div>
                         )}
                     </div>
-                    <p className="text-slate-500 text-xs text-center md:text-left mt-8">
+                    <p className="text-slate-400 text-xs text-center md:text-left mt-8">
                         Referencia rápida en vivo (Open-Meteo). Antes de cada salida, nuestro equipo confirma las condiciones cruzando Windguru, Windy y el Servicio Meteorológico Nacional.
                     </p>
                 </AnimateIn>

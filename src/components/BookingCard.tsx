@@ -80,7 +80,11 @@ export function BookingCard({ exp }: BookingCardProps) {
                 <p className="text-slate-500 text-sm mb-4 leading-relaxed">{exp.description}</p>
 
                 {/* Detalles expandibles */}
-                <div className={`overflow-hidden transition-all duration-300 ${showDetails ? "max-h-40 opacity-100 mb-4" : "max-h-0 opacity-0"}`}>
+                <div
+                    id={`${exp.slug}-detalles`}
+                    aria-hidden={!showDetails}
+                    className={`overflow-hidden transition-all duration-300 ${showDetails ? "max-h-40 opacity-100 mb-4" : "max-h-0 opacity-0"}`}
+                >
                     <ul className="space-y-1.5 bg-slate-50 rounded-xl p-4">
                         {extraDetails[exp.id]?.map((d) => (
                             <li key={d} className="flex items-start gap-2 text-sm text-slate-600">
@@ -91,15 +95,24 @@ export function BookingCard({ exp }: BookingCardProps) {
                     </ul>
                 </div>
 
-                <p className="text-xs text-slate-400 mb-4 flex items-center gap-1">
+                <button
+                    type="button"
+                    aria-expanded={showDetails}
+                    aria-controls={`${exp.slug}-detalles`}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setShowDetails((prev) => !prev);
+                    }}
+                    className="self-start text-xs text-slate-500 hover:text-slate-700 mb-4 flex items-center gap-1 cursor-pointer"
+                >
                     <ChevronDown size={14} className={`transition-transform duration-200 ${showDetails ? "rotate-180" : ""}`} />
                     {showDetails ? "Menos detalles" : "Ver qué incluye"}
-                </p>
+                </button>
 
                 <div className="pt-4 border-t border-slate-100 mt-auto">
                     <button
                         onClick={handleReserve}
-                        className="w-full bg-cyan-50 hover:bg-cyan-600 text-cyan-600 hover:text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-cyan-600/25 border border-cyan-200 hover:border-cyan-600 flex items-center justify-center gap-1.5 cursor-pointer"
+                        className="w-full bg-amber-400 hover:bg-amber-300 text-lago-noche font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-amber-500/30 border border-amber-400 hover:border-amber-300 flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                         Consultar por WhatsApp →
                     </button>

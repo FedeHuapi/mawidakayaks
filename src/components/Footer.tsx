@@ -36,7 +36,7 @@ export function Footer() {
     };
 
     return (
-        <footer className="bg-slate-900 text-slate-300">
+        <footer className="bg-lago-noche text-slate-300">
             <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
 
                 {/* Desktop */}
@@ -78,13 +78,13 @@ export function Footer() {
 
                 {/* Mobile acordeón exclusivo */}
                 <div className="md:hidden">
-                    <div className="pb-4 mb-1 border-b border-slate-800">
+                    <div className="pb-4 mb-1 border-b border-white/10">
                         <h3 className="text-white font-bold mb-2 tracking-wide">Mawida</h3>
                         <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
                     </div>
 
                     {footerSections.map(({ title, links }) => (
-                        <div key={title} className="border-b border-slate-800">
+                        <div key={title} className="border-b border-white/10">
                             <button
                                 onClick={() => toggle(title)}
                                 className="w-full flex justify-between items-center py-3.5 text-left text-white font-medium text-sm tracking-wide"
@@ -113,7 +113,7 @@ export function Footer() {
                         </div>
                     ))}
 
-                    <div className="border-b border-slate-800">
+                    <div className="border-b border-white/10">
                         <button
                             onClick={() => toggle("Contacto")}
                             className="w-full flex justify-between items-center py-3.5 text-left text-white font-medium text-sm tracking-wide"
@@ -142,7 +142,7 @@ export function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <div className="border-t border-slate-800 mt-8 pt-8 text-center text-xs text-slate-500 tracking-wide">
+                <div className="border-t border-white/10 mt-8 pt-8 text-center text-xs text-slate-400 tracking-wide">
                     <p>© 2026 Mawida · Expediciones y Escuela de Kayak · Todos los derechos reservados.</p>
                 </div>
             </div>

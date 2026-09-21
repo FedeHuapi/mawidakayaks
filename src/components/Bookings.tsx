@@ -47,7 +47,7 @@ const expeditions = [
 
 export function Bookings() {
     return (
-        <div id="expediciones" className="relative pt-14 pb-28 md:py-28 overflow-hidden" style={{ backgroundColor: "#5D776B" }}>
+        <div id="expediciones" className="relative pt-14 pb-28 md:py-28 overflow-hidden bg-lago">
             {/* En mobile el video se limita a una franja tipo banner (más alta, con fundido corto)
                 para que se vea bien antes de pasar a las tarjetas; en desktop cubre toda la sección */}
             <div className="absolute inset-x-0 top-0 h-[210vh] md:bottom-0 md:h-auto">
@@ -58,12 +58,12 @@ export function Bookings() {
                     mobilePoster="/gallery/bookings-bg-mobile-poster.jpg"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-slate-900/40" />
+                <div className="absolute inset-0 bg-lago-noche/40" />
                 {/* El video se disuelve hacia su propio color de agua (#5D776B), que sigue siendo el fondo de FAQ */}
                 <div
                     className="absolute inset-x-0 bottom-0 h-40 md:h-48"
                     style={{
-                        background: "linear-gradient(to bottom, transparent 0%, #2F6B72 45%, #5D776B 100%)",
+                        background: "linear-gradient(to bottom, transparent 0%, var(--color-lago-profundo) 45%, var(--color-lago) 100%)",
                     }}
                 />
             </div>
@@ -71,7 +71,7 @@ export function Bookings() {
             <div className="relative z-10 max-w-6xl mx-auto px-4">
                 <AnimateIn className="text-center mb-8 md:mb-14">
                     <span className="text-cyan-300 text-xs font-semibold tracking-[0.2em] uppercase">Para los más aventureros</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">Elegí tu aventura</h2>
+                    <h2 className="font-kg text-4xl md:text-5xl text-white mt-3 mb-4">Elegí tu aventura</h2>
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <div className="h-px w-12 bg-white/20" />
                         <div className="h-1 w-8 bg-cyan-400 rounded-full" />

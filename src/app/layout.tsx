@@ -8,8 +8,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mawida",
-  description: "Tours en Kayak por la Patagonia",
+  title: "Mawida | Expediciones y escuela de kayak en Lago Moquehue, Villa Pehuenia",
+  description:
+    "Salidas guiadas en kayak de 2 a 6 horas por el lago Moquehue, en Villa Pehuenia (Neuquén, Patagonia). Equipo incluido, grupos reducidos y escuela de kayak en verano.",
+  openGraph: {
+    title: "Mawida | Expediciones y escuela de kayak en Lago Moquehue",
+    description:
+      "Salidas guiadas en kayak de 2 a 6 horas por el lago Moquehue, en Villa Pehuenia. Equipo incluido y grupos reducidos.",
+    locale: "es_AR",
+    type: "website",
+    siteName: "Mawida",
+  },
   icons: {
     icon: "/favicon-v2.ico",
     apple: "/apple-touch-icon.png",

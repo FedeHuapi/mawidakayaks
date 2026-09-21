@@ -83,15 +83,11 @@ export function Reviews() {
     };
 
     return (
-        <section className="relative py-24 bg-slate-50 overflow-hidden">
-            <div
-                className="absolute bottom-0 left-0 w-full h-[2px] z-10"
-                style={{ background: "linear-gradient(to right, transparent 0%, #67e8f9 50%, transparent 100%)" }}
-            />
+        <section className="relative py-24 bg-bruma overflow-hidden">
             <div className="relative z-10 max-w-3xl mx-auto px-4">
                 <AnimateIn className="text-center mb-16">
                     <span className="text-cyan-600 text-xs font-semibold tracking-[0.2em] uppercase">Lo que dicen nuestros clientes</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mt-3 mb-4">Reseñas</h2>
+                    <h2 className="font-kg text-4xl md:text-5xl text-lago-noche mt-3 mb-4">Reseñas</h2>
                     <div className="flex items-center justify-center gap-3">
                         <div className="h-px w-12 bg-slate-200" />
                         <div className="h-1 w-8 bg-cyan-500 rounded-full" />
@@ -104,6 +100,8 @@ export function Reviews() {
                         className="relative"
                         onMouseEnter={() => setPaused(true)}
                         onMouseLeave={() => setPaused(false)}
+                        onFocus={() => setPaused(true)}
+                        onBlur={() => setPaused(false)}
                         onPointerDown={handlePointerDown}
                         onPointerMove={handlePointerMove}
                         onPointerUp={handlePointerUp}
@@ -122,7 +120,7 @@ export function Reviews() {
                                 ))}
                             </div>
                             <p className="font-bold text-slate-800">{reviews[current].name}</p>
-                            <p className="text-slate-400 text-sm mt-1 flex items-center justify-center gap-1.5">
+                            <p className="text-slate-500 text-sm mt-1 flex items-center justify-center gap-1.5">
                                 {reviews[current].date}
                                 <span className="flex items-center gap-1">
                                     · <GoogleLogo size={14} /> Google
@@ -148,16 +146,21 @@ export function Reviews() {
                     </div>
 
                     {/* Dots */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center mt-6">
                         {reviews.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
                                 aria-label={`Reseña ${i + 1}`}
-                                className={`rounded-full transition-all duration-300 ${
-                                    i === current ? "w-6 h-2 bg-cyan-500" : "w-2 h-2 bg-slate-200 hover:bg-slate-300"
-                                }`}
-                            />
+                                aria-current={i === current}
+                                className="group flex items-center justify-center px-1.5 py-3"
+                            >
+                                <span
+                                    className={`block rounded-full transition-all duration-300 ${
+                                        i === current ? "w-6 h-2 bg-cyan-500" : "w-2 h-2 bg-lago group-hover:bg-lago-noche"
+                                    }`}
+                                />
+                            </button>
                         ))}
                     </div>
                 </AnimateIn>

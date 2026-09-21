@@ -2,15 +2,25 @@
 
 @font-face {
   font-family: 'KG Second Chances Solid';
-  src: url('/fonts/KGSecondChancesSolid.ttf') format('truetype');
+  src: url('/fonts/KGSECONDCHANCESSOLID.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+@theme static {
+  --font-kg: 'KG Second Chances Solid', ui-rounded, 'Segoe UI', sans-serif;
+
+  --color-lago: #5D776B;
+  --color-lago-profundo: #2F6B72;
+  --color-lago-noche: #0E2A2F;
+  --color-bruma: #DDEBE7;
+}
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
