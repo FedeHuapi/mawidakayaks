@@ -10,7 +10,6 @@ interface Expedition {
     name: string;
     duration: string;
     description: string;
-    price: string;
     badge?: string;
     photo: string;
 }

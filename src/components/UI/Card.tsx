@@ -7,7 +7,6 @@ interface CardProps {
     name: string;
     duration: string;
     description: string;
-    price: string;
     icon: string;
     onView: () => void;
     onReserve: () => void;
@@ -17,7 +16,6 @@ export const Card: FC<CardProps> = ({
     name,
     duration,
     description,
-    price,
     icon,
     onView,
     onReserve
@@ -61,11 +59,7 @@ export const Card: FC<CardProps> = ({
             {/* Descripción */}
             <p className="text-gray-700 text-center mb-6 flex-grow">{description}</p>
 
-            {/* Precio */}
-            <div className="text-center mb-8">
-                <div className="text-3xl font-bold text-gray-900">{price}</div>
-                <div className="text-gray-500 text-sm mt-1">por persona</div>
-            </div>
+            <div className="mb-8" />
 
             {/* Botones */}
             <div className="w-full space-y-3">

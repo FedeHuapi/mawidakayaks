@@ -17,13 +17,13 @@ const footerSections = [
             { label: "Quillahue", href: "#expedicion-quillahue" },
             { label: "Isla Lepen", href: "#expedicion-isla-lepen" },
             { label: "Lago Moquehue", href: "#expedicion-lago-moquehue" },
+            { label: "Bella Durmiente", href: "#expedicion-bella-durmiente" },
         ],
     },
     {
         title: "Escuela",
         links: [
-            { label: "Cursos de verano", href: "#escuela" },
-            { label: "Calendario", href: "#escuela" },
+            { label: "Escuelita de verano", href: "#escuela" },
         ],
     },
 ];
@@ -42,7 +42,7 @@ export function Footer() {
                 {/* Desktop */}
                 <div className="hidden md:grid md:grid-cols-4 gap-8">
                     <div>
-                        <h3 className="text-white font-bold mb-4 tracking-wide">Mawida</h3>
+                        <img src="/logo.png" alt="Mawida" className="h-12 w-auto mb-4" />
                         <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
                     </div>
                     {footerSections.map(({ title, links }) => (
@@ -79,7 +79,7 @@ export function Footer() {
                 {/* Mobile acordeón exclusivo */}
                 <div className="md:hidden">
                     <div className="pb-4 mb-1 border-b border-white/10">
-                        <h3 className="text-white font-bold mb-2 tracking-wide">Mawida</h3>
+                        <img src="/logo.png" alt="Mawida" className="h-10 w-auto mb-3" />
                         <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
                     </div>
 

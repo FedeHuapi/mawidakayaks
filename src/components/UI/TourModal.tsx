@@ -8,7 +8,6 @@ interface TourModalProps {
         name: string;
         duration: string;
         description: string;
-        price: string;
         icon: string;
         detailedDescription: string;
         itinerary: string[];
@@ -46,7 +45,7 @@ export const TourModal: FC<TourModalProps> = ({
         const phone = "5492993266379";
         const message = `*¡Hola Mawida!*%0A%0AQuiero reservar:%0A%0A` +
             `📌 *Expedición:* ${tour.name} (${tour.duration})%0A` +
-            `💰 *Precio:* ${tour.price}%0A%0A` +
+            `%0A` +
             `👥 Cantidad de personas: [COMPLETAR]%0A` +
             `📅 Fecha deseada: [COMPLETAR]%0A` +
             `👤 Nombre: [COMPLETAR]%0A%0A` +
@@ -81,7 +80,6 @@ export const TourModal: FC<TourModalProps> = ({
                         <span className="bg-green-100 text-green-800 px-4 py-1 rounded-full">
                             {tour.duration}
                         </span>
-                        <span className="text-2xl font-bold text-gray-900">{tour.price}</span>
                     </div>
                 </div>
 
