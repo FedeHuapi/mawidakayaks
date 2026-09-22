@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, MapPin } from "lucide-react";
 import { handleAnchorClick } from "../lib/smoothScroll";
 
 const contactInfo = [
     { icon: Phone, text: "+54 9 1234 5678", href: "tel:+5491234567" },
-    { icon: Mail, text: "info@mawida.com", href: "mailto:info@mawida.com" },
     { icon: MapPin, text: "Villa Pehuenia - Moquehue, Neuquén", href: undefined },
 ];
 
@@ -42,7 +42,7 @@ export function Footer() {
                 {/* Desktop */}
                 <div className="hidden md:grid md:grid-cols-4 gap-8">
                     <div>
-                        <img src="/logo.png" alt="Mawida" className="h-12 w-auto mb-4" />
+                        <Image src="/logo.png" alt="Mawida" width={236} height={175} className="h-12 w-auto mb-4" />
                         <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
                     </div>
                     {footerSections.map(({ title, links }) => (
@@ -54,7 +54,7 @@ export function Footer() {
                                         <a
                                             href={href}
                                             onClick={handleAnchorClick}
-                                            className="relative text-slate-400 hover:text-cyan-400 transition-colors duration-200 after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
+                                            className="inline-block text-slate-400 hover:text-cyan-400 hover:scale-105 transition-all duration-200"
                                         >
                                             {label}
                                         </a>
@@ -79,7 +79,7 @@ export function Footer() {
                 {/* Mobile acordeón exclusivo */}
                 <div className="md:hidden">
                     <div className="pb-4 mb-1 border-b border-white/10">
-                        <img src="/logo.png" alt="Mawida" className="h-10 w-auto mb-3" />
+                        <Image src="/logo.png" alt="Mawida" width={236} height={175} className="h-10 w-auto mb-3" />
                         <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
                     </div>
 

@@ -41,7 +41,7 @@ export function BookingCard({ exp }: BookingCardProps) {
         const phone = "5492993266379";
         const message = `¡Hola Mawida! Quiero reservar la ${exp.name} (${exp.duration}). ¿Me pasan info de fechas y disponibilidad?`;
         const whatsappURL = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, "_blank");
+        window.open(whatsappURL, "_blank", "noopener,noreferrer");
     };
 
     return (

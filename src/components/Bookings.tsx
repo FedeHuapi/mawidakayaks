@@ -78,7 +78,7 @@ export function Bookings() {
                     </p>
                 </AnimateIn>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
                     {expeditions.map((exp, i) => (
                         <AnimateIn key={exp.id} delay={i * 120}>
                             <BookingCard exp={exp} />

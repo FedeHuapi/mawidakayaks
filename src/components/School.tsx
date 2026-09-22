@@ -13,13 +13,8 @@ export function School() {
     return (
         <section id="escuela" className="relative py-24 bg-cyan-100 overflow-hidden">
             <div
-                className="absolute inset-0"
-                style={{
-                    backgroundImage: "url(/gallery/logo-stickers-bg.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}
+                className="absolute inset-0 bg-[length:900px_auto] bg-repeat bg-center md:bg-cover md:bg-no-repeat"
+                style={{ backgroundImage: "url(/gallery/logo-stickers-bg.png)" }}
             />
             <div className="relative z-10 max-w-6xl mx-auto px-4">
                 <AnimateIn className="text-center mb-14">

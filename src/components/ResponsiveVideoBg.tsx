@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 interface ResponsiveVideoBgProps {
     desktopSrc: string;
@@ -10,17 +10,25 @@ interface ResponsiveVideoBgProps {
     className?: string;
 }
 
-export function ResponsiveVideoBg({ desktopSrc, mobileSrc, desktopPoster, mobilePoster, className }: ResponsiveVideoBgProps) {
-    const [isMobile, setIsMobile] = useState<boolean | null>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
+const MOBILE_QUERY = "(max-width: 767px)";
 
-    useEffect(() => {
-        const mql = window.matchMedia("(max-width: 767px)");
-        setIsMobile(mql.matches);
-        const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-        mql.addEventListener("change", handler);
-        return () => mql.removeEventListener("change", handler);
-    }, []);
+function subscribe(callback: () => void) {
+    const mql = window.matchMedia(MOBILE_QUERY);
+    mql.addEventListener("change", callback);
+    return () => mql.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+    return window.matchMedia(MOBILE_QUERY).matches;
+}
+
+function getServerSnapshot() {
+    return null;
+}
+
+export function ResponsiveVideoBg({ desktopSrc, mobileSrc, desktopPoster, mobilePoster, className }: ResponsiveVideoBgProps) {
+    const isMobile = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         const video = videoRef.current;

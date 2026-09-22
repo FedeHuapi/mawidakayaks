@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Wind, Sun, Cloud, CloudRain, CloudSnow, Thermometer, CheckCircle, AlertTriangle } from "lucide-react";
 import { AnimateIn } from "./AnimateIn";
 
@@ -35,14 +35,14 @@ function formatToday() {
     return today.charAt(0).toUpperCase() + today.slice(1);
 }
 
+const noSubscription = () => () => {};
+
 export function Weather() {
     const [weather, setWeather] = useState<WeatherData | null>(null);
     const [error, setError] = useState(false);
-    const [today, setToday] = useState<string | null>(null);
-
-    useEffect(() => {
-        setToday(formatToday());
-    }, []);
+    // Se calcula solo en el cliente para evitar mostrar una fecha "congelada"
+    // del momento en que se generó la página estática.
+    const today = useSyncExternalStore(noSubscription, formatToday, () => null);
 
     useEffect(() => {
         fetch(
