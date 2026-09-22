@@ -15,7 +15,7 @@ const faqs = [
     },
     {
         q: "¿Cuál es la edad mínima?",
-        a: "Para las expediciones guiadas la edad mínima es 10 años. Menores entre 6 y 10 años pueden participar si van acompañados por un adulto y el guía evalúa que las condiciones del día son adecuadas.",
+        a: "Para las expediciones guiadas la edad mínima es 10 años. Menores entre 6CD y 10 años pueden participar si van acompañados por un adulto y el guía evalúa que las condiciones del día son adecuadas.",
     },
     {
         q: "¿Necesito tener experiencia previa?",
