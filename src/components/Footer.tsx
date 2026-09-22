@@ -4,10 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { handleAnchorClick } from "../lib/smoothScroll";
+import { BUSINESS } from "../lib/site";
 
 const contactInfo = [
-    { icon: Phone, text: "+54 9 1234 5678", href: "tel:+5491234567" },
-    { icon: MapPin, text: "Villa Pehuenia - Moquehue, Neuquén", href: undefined },
+    { icon: Phone, text: BUSINESS.phoneDisplay, href: `tel:${BUSINESS.phoneE164}` },
+    { icon: MapPin, text: `${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}`, href: undefined },
+];
+
+const socialLinks = [
+    { name: "Instagram", icon: "/assets/instagram.png", href: BUSINESS.instagram },
+    { name: "TikTok", icon: "/assets/tiktok.png", href: BUSINESS.tiktok },
 ];
 
 const footerSections = [
@@ -43,7 +49,21 @@ export function Footer() {
                 <div className="hidden md:grid md:grid-cols-4 gap-8">
                     <div>
                         <Image src="/logo.png" alt="Mawida" width={236} height={175} className="h-12 w-auto mb-4" />
-                        <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
+                        <p className="text-sm text-slate-400 leading-relaxed mb-4">Expediciones y escuela de kayak en la Patagonia argentina.</p>
+                        <div className="flex items-center gap-3">
+                            {socialLinks.map(({ name, icon, href }) => (
+                                <a
+                                    key={name}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={name}
+                                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-cyan-400 flex items-center justify-center transition-colors duration-200"
+                                >
+                                    <Image src={icon} alt="" width={16} height={16} className="w-4 h-4 brightness-0 invert" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
                     {footerSections.map(({ title, links }) => (
                         <div key={title}>
@@ -80,7 +100,21 @@ export function Footer() {
                 <div className="md:hidden">
                     <div className="pb-4 mb-1 border-b border-white/10">
                         <Image src="/logo.png" alt="Mawida" width={236} height={175} className="h-10 w-auto mb-3" />
-                        <p className="text-sm text-slate-400 leading-relaxed">Expediciones y escuela de kayak en la Patagonia argentina.</p>
+                        <p className="text-sm text-slate-400 leading-relaxed mb-4">Expediciones y escuela de kayak en la Patagonia argentina.</p>
+                        <div className="flex items-center gap-3">
+                            {socialLinks.map(({ name, icon, href }) => (
+                                <a
+                                    key={name}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={name}
+                                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-cyan-400 flex items-center justify-center transition-colors duration-200"
+                                >
+                                    <Image src={icon} alt="" width={16} height={16} className="w-4 h-4 brightness-0 invert" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
 
                     {footerSections.map(({ title, links }) => (

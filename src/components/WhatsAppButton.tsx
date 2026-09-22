@@ -1,10 +1,10 @@
 import Image from "next/image";
+import { BUSINESS } from "../lib/site";
 
-const WHATSAPP_NUMBER = "5492993266379";
 const MESSAGE = "¡Hola Mawida! Quiero consultar por las expediciones de kayak.";
 
 export function WhatsAppButton() {
-    const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(MESSAGE)}`;
+    const url = `https://api.whatsapp.com/send?phone=${BUSINESS.whatsappNumber}&text=${encodeURIComponent(MESSAGE)}`;
 
     return (
         <a

@@ -1,0 +1,38 @@
+name: CI
+
+# Cuándo se dispara este workflow:
+# - en cada push a main (por si alguna vez se commitea directo, como hoy)
+# - en cada Pull Request dirigido a main (así lo ves fallar ANTES de mergear)
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Lint & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descarga el código del repo en la máquina virtual que nos presta GitHub
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Instala Node.js y cachea node_modules entre corridas para que sea más rápido
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      # "ci" (a diferencia de "npm install") instala exactamente lo que dice
+      # package-lock.json, sin margen para sorpresas entre tu máquina y esta.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
