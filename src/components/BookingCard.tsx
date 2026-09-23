@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { BUSINESS } from "../lib/site";
 
 interface Expedition {
     id: number;
@@ -38,9 +39,8 @@ export function BookingCard({ exp }: BookingCardProps) {
 
     const handleReserve = (e: React.MouseEvent) => {
         e.stopPropagation();
-        const phone = "5492993266379";
         const message = `¡Hola Mawida! Quiero reservar la ${exp.name} (${exp.duration}). ¿Me pasan info de fechas y disponibilidad?`;
-        const whatsappURL = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${BUSINESS.whatsappNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, "_blank", "noopener,noreferrer");
     };
 
